@@ -19,6 +19,7 @@ stack of self-hosted services managed by Docker Compose.
 ## Services
 
 - **[Diun]**: Monitor Docker image updates
+- **[Duplicati]**: Backup data
 
 ## Data Storage
 
@@ -60,4 +61,5 @@ This project is licensed under the MIT License - see the [LICENSE] file for
 details.
 
 [Diun]: ./diun/README.md
+[Duplicati]: ./duplicati/README.md
 [LICENSE]: ./LICENSE
