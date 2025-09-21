@@ -22,6 +22,7 @@ stack of self-hosted services managed by Docker Compose.
 - **[Duplicati]**: Backup data
 - **[FreshRSS]**: A RSS and Atom feed aggregator
 - **[Joplin]**: An open-source note-taking and to-do application
+- **[Mealie]**: A recipe manager and meal planner
 - **[Newt]**: Docker container management for [Pangolin]
 - **[Syncthing]**: A continuous file synchronization program
 - **[Vaultwarden]**: an unofficial [Bitwarden] compatible server written in Rust
@@ -72,6 +73,7 @@ details.
 [Diun]: ./diun/README.md
 [Duplicati]: ./duplicati/README.md
 [FreshRSS]: ./freshrss/README.md
+[Mealie]: ./mealie/README.md
 [Joplin]: ./joplin/README.md
 [LICENSE]: ./LICENSE
 [Newt]: ./newt/README.md

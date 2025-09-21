@@ -1,0 +1,18 @@
+services:
+  mealie:
+    container_name: mealie
+    deploy:
+      resources:
+        limits:
+          cpus: ${SERVICE_LIMIT_CPU}
+          memory: ${SERVICE_LIMIT_MEMORY}
+    env_file:
+      - .env
+    image: ghcr.io/mealie-recipes/mealie:latest
+    ports:
+      - ${SERVICE_PORT}:9000
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${SERVICE_FOLDER_DATA}:/app/data/
