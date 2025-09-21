@@ -23,6 +23,7 @@ stack of self-hosted services managed by Docker Compose.
 - **[Newt]**: Docker container management for [Pangolin]
 - **[Syncthing]**: A continuous file synchronization program
 - **[Vaultwarden]**: an unofficial [Bitwarden] compatible server written in Rust
+- **[Wallabag]**: A read-it-later application to save web articles
 
 ## Data Storage
 
@@ -71,3 +72,4 @@ details.
 [Pangolin]: https://docs.digpangolin.com/
 [Syncthing]: ./syncthing/README.md
 [Vaultwarden]: ./vaultwarden/README.md
+[Wallabag]: ./wallabag/README.md
