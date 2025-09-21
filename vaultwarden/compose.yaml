@@ -1,0 +1,18 @@
+services:
+  vaultwarden:
+    container_name: vaultwarden
+    deploy:
+      resources:
+        limits:
+          cpus: ${SERVICE_LIMIT_CPU}
+          memory: ${SERVICE_LIMIT_MEMORY}
+    env_file:
+      - .env
+    image: vaultwarden/server:latest-alpine
+    ports:
+      - ${SERVICE_PORT}:80
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${SERVICE_FOLDER_DATA}:/data

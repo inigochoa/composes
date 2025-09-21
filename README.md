@@ -22,6 +22,7 @@ stack of self-hosted services managed by Docker Compose.
 - **[Duplicati]**: Backup data
 - **[Newt]**: Docker container management for [Pangolin]
 - **[Syncthing]**: A continuous file synchronization program
+- **[Vaultwarden]**: an unofficial [Bitwarden] compatible server written in Rust
 
 ## Data Storage
 
@@ -62,9 +63,11 @@ directory exists and has appropriate permissions.
 This project is licensed under the MIT License - see the [LICENSE] file for
 details.
 
+[Bitwarden]: https://bitwarden.com/
 [Diun]: ./diun/README.md
 [Duplicati]: ./duplicati/README.md
 [LICENSE]: ./LICENSE
 [Newt]: ./newt/README.md
 [Pangolin]: https://docs.digpangolin.com/
 [Syncthing]: ./syncthing/README.md
+[Vaultwarden]: ./vaultwarden/README.md
