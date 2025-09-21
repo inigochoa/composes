@@ -21,6 +21,7 @@ stack of self-hosted services managed by Docker Compose.
 - **[Diun]**: Monitor Docker image updates
 - **[Duplicati]**: Backup data
 - **[Newt]**: Docker container management for [Pangolin]
+- **[Syncthing]**: A continuous file synchronization program
 
 ## Data Storage
 
@@ -66,3 +67,4 @@ details.
 [LICENSE]: ./LICENSE
 [Newt]: ./newt/README.md
 [Pangolin]: https://docs.digpangolin.com/
+[Syncthing]: ./syncthing/README.md
