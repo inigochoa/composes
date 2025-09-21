@@ -16,6 +16,10 @@ stack of self-hosted services managed by Docker Compose.
 - At least 4GB RAM (recommended 8GB+).
 - Sufficient disk space for your services.
 
+## Services
+
+- **[Diun]**: Monitor Docker image updates
+
 ## Data Storage
 
 All service data is stored in `/opt/data/[service-name]`. Make sure this
@@ -55,4 +59,5 @@ directory exists and has appropriate permissions.
 This project is licensed under the MIT License - see the [LICENSE] file for
 details.
 
+[Diun]: ./diun/README.md
 [LICENSE]: ./LICENSE

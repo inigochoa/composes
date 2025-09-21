@@ -1,0 +1,17 @@
+services:
+  diun:
+    container_name: diun
+    deploy:
+      resources:
+        limits:
+          cpus: ${SERVICE_LIMIT_CPU}
+          memory: ${SERVICE_LIMIT_MEMORY}
+    env_file:
+      - .env
+    image: crazymax/diun:latest
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${SERVICE_FOLDER_DATA}:/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
