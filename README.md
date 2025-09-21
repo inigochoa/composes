@@ -21,6 +21,7 @@ stack of self-hosted services managed by Docker Compose.
 - **[Diun]**: Monitor Docker image updates
 - **[Duplicati]**: Backup data
 - **[FreshRSS]**: A RSS and Atom feed aggregator
+- **[Joplin]**: An open-source note-taking and to-do application
 - **[Newt]**: Docker container management for [Pangolin]
 - **[Syncthing]**: A continuous file synchronization program
 - **[Vaultwarden]**: an unofficial [Bitwarden] compatible server written in Rust
@@ -69,6 +70,7 @@ details.
 [Diun]: ./diun/README.md
 [Duplicati]: ./duplicati/README.md
 [FreshRSS]: ./freshrss/README.md
+[Joplin]: ./joplin/README.md
 [LICENSE]: ./LICENSE
 [Newt]: ./newt/README.md
 [Pangolin]: https://docs.digpangolin.com/

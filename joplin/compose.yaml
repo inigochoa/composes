@@ -1,0 +1,35 @@
+services:
+  db:
+    container_name: joplin_db
+    deploy:
+      resources:
+        limits:
+          cpus: ${SERVICE_LIMIT_CPU}
+          memory: ${SERVICE_LIMIT_MEMORY}
+    env_file:
+      - .env
+    image: postgres:16
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${SERVICE_FOLDER_BACKUP}:/backups
+      - ${SERVICE_FOLDER_DATA}:/var/lib/postgresql/data
+
+  joplin:
+    container_name: joplin
+    depends_on:
+      - db
+    deploy:
+      resources:
+        limits:
+          cpus: ${SERVICE_LIMIT_CPU_DB}
+          memory: ${SERVICE_LIMIT_MEMORY_DB}
+    env_file:
+      - .env
+    image: joplin/server:latest
+    ports:
+      - ${SERVICE_PORT}:22300
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
