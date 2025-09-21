@@ -1,0 +1,19 @@
+services:
+  freshrss:
+    container_name: freshrss
+    deploy:
+      resources:
+        limits:
+          cpus: ${SERVICE_LIMIT_CPU}
+          memory: ${SERVICE_LIMIT_MEMORY}
+    env_file:
+      - .env
+    image: freshrss/freshrss:latest
+    ports:
+      - ${SERVICE_PORT}:80
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${SERVICE_FOLDER_DATA}:/var/www/FreshRSS/data
+      - ${SERVICE_FOLDER_EXTENSIONS}:/var/www/FreshRSS/extensions
