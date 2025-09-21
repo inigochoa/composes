@@ -26,6 +26,7 @@ stack of self-hosted services managed by Docker Compose.
 - **[Syncthing]**: A continuous file synchronization program
 - **[Vaultwarden]**: an unofficial [Bitwarden] compatible server written in Rust
 - **[Wallabag]**: A read-it-later application to save web articles
+- **[Yamtrack]**: A media tracking application
 
 ## Data Storage
 
@@ -77,3 +78,4 @@ details.
 [Syncthing]: ./syncthing/README.md
 [Vaultwarden]: ./vaultwarden/README.md
 [Wallabag]: ./wallabag/README.md
+[Yamtrack]: ./yamtrack/README.md
