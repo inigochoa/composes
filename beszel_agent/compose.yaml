@@ -1,0 +1,22 @@
+services:
+  beszel_agent:
+    container_name: beszel_agent
+    deploy:
+      resources:
+        limits:
+          cpus: ${SERVICE_LIMIT_CPU}
+          memory: ${SERVICE_LIMIT_MEMORY}
+    env_file:
+      - .env
+    healthcheck:
+      interval: 120s
+      test: ['CMD', '/agent', 'health']
+    image: henrygd/beszel-agent:latest
+    network_mode: host
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${SERVICE_FOLDER_DATA}:/var/lib/beszel-agent
+      - ${SERVICE_FOLDER_SOCKET}:/beszel_socket
+      - /var/run/docker.sock:/var/run/docker.sock:ro
