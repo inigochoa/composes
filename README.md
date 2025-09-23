@@ -18,6 +18,7 @@ stack of self-hosted services managed by Docker Compose.
 
 ## Services
 
+- **[Beszel]**: A lightweight server monitoring solution with dashboard
 - **[Diun]**: Monitor Docker image updates
 - **[Duplicati]**: Backup data
 - **[FreshRSS]**: A RSS and Atom feed aggregator
@@ -70,6 +71,7 @@ directory exists and has appropriate permissions.
 This project is licensed under the MIT License - see the [LICENSE] file for
 details.
 
+[Beszel]: ./beszel/README.md
 [Bitwarden]: https://bitwarden.com/
 [Diun]: ./diun/README.md
 [Duplicati]: ./duplicati/README.md

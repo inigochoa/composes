@@ -1,0 +1,23 @@
+services:
+  beszel:
+    container_name: beszel
+    deploy:
+      resources:
+        limits:
+          cpus: ${SERVICE_LIMIT_CPU}
+          memory: ${SERVICE_LIMIT_MEMORY}
+    env_file:
+      - .env
+    healthcheck:
+      interval: 120s
+      start_period: 5s
+      test: ['CMD', '/beszel', 'health', '--url', 'http://localhost:8090']
+    image: henrygd/beszel:latest
+    ports:
+      - ${SERVICE_PORT}:8090
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${SERVICE_FOLDER_DATA}:/beszel_data
+      - ${SERVICE_FOLDER_SOCKET}:/beszel_socket
