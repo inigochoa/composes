@@ -18,7 +18,6 @@ stack of self-hosted services managed by Docker Compose.
 
 ## Services
 
-- **[Beaver habits]**: A habit tracking application
 - **[Beszel]**: A lightweight server monitoring solution with dashboard
 - **[Beszel agent]**: The monitoring component for the Beszel monitoring system
 - **[Diun]**: Monitor Docker image updates
@@ -73,7 +72,6 @@ directory exists and has appropriate permissions.
 This project is licensed under the MIT License - see the [LICENSE] file for
 details.
 
-[Beaver habits]: ./beaverhabits/README.md
 [Beszel]: ./beszel/README.md
 [Beszel agent]: ./beszel_agent/README.md
 [Bitwarden]: https://bitwarden.com/
