@@ -4,32 +4,51 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU}
-          memory: ${SERVICE_LIMIT_MEMORY}
-    env_file:
-      - .env
-    image: postgres:16
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    volumes:
-      - ${SERVICE_FOLDER_BACKUP}:/backups
-      - ${SERVICE_FOLDER_DATA}:/var/lib/postgresql/data
-
-  joplin:
-    container_name: joplin
-    depends_on:
-      - db
-    deploy:
-      resources:
-        limits:
           cpus: ${SERVICE_LIMIT_CPU_DB}
           memory: ${SERVICE_LIMIT_MEMORY_DB}
     env_file:
       - .env
-    image: joplin/server:latest
-    ports:
-      - ${SERVICE_PORT}:22300
+    image: 11notes/postgres:16
+    read_only: true
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
+    tmpfs:
+      - /postgres/run:uid=1000,gid=1000
+      - /postgres/log:uid=1000,gid=1000
+    volumes:
+      - postgres.etc:/postgres/etc
+      - postgres.var:/postgres/var
+      - ${SERVICE_FOLDER_BACKUP}:/postgres/backup
+
+  joplin:
+    container_name: joplin
+    depends_on:
+      db:
+        condition: service_healthy
+        restart: true
+    deploy:
+      resources:
+        limits:
+          cpus: ${SERVICE_LIMIT_CPU}
+          memory: ${SERVICE_LIMIT_MEMORY}
+    env_file:
+      - .env
+    image: 11notes/joplin:3.4.12
+    ports:
+      - ${SERVICE_PORT}:22300/tcp
+    read_only: true
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:uid=1000,gid=1000
+    volumes:
+      - joplin.etc:/joplin/etc
+      - joplin.var:/joplin/var
+
+volumes:
+  joplin.etc:
+  joplin.var:
+  postgres.etc:
+  postgres.var:
