@@ -34,7 +34,7 @@ services:
           memory: ${SERVICE_LIMIT_MEMORY}
     env_file:
       - .env
-    image: 11notes/joplin:3.4.12
+    image: 11notes/joplin:3
     ports:
       - ${SERVICE_PORT}:22300/tcp
     read_only: true
