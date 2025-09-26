@@ -17,19 +17,14 @@ the variables from your `.env.example`:
 | `APP_BASE_URL`              | Config | Base URL for Warracker application      | `https://warracker.example.com` | Yes      |
 | `FRONTEND_URL`              | Config | Frontend URL for CORS configuration     | `https://warracker.example.com` | Yes      |
 | `SECRET_KEY`                | Config | Secret key for JWT token generation     | `your-very-secure-secret`       | Yes      |
-| `DB_ADMIN_PASSWORD`         | Config | PostgreSQL admin password               | `admin_password123`             | Yes      |
-| `DB_ADMIN_USER`             | Config | PostgreSQL admin username               | `admin`                         | Yes      |
 | `DB_HOST`                   | Config | Database host (container name)          | `db`                            | Yes      |
-| `DB_NAME`                   | Config | Database name                           | `warracker`                     | Yes      |
-| `DB_USER`                   | Config | Database username                       | `warracker`                     | Yes      |
+| `DB_NAME`                   | Config | Database name                           | `postgres`                      | Yes      |
 | `DB_PASSWORD`               | Config | Database user password                  | `secure_password123`            | Yes      |
-| `POSTGRES_DB`               | Config | PostgreSQL database name                | `warracker`                     | Yes      |
+| `DB_USER`                   | Config | Database username                       | `postgres`                      | Yes      |
+| `POSTGRES_BACKUP_SCHEDULE`  | Config | Cron schedule for automatic backups     | `0 2 * * *`                     | Yes      |
 | `POSTGRES_HOST`             | Config | PostgreSQL host (container name)        | `db`                            | Yes      |
 | `POSTGRES_PASSWORD`         | Config | PostgreSQL password                     | `secure_password123`            | Yes      |
-| `POSTGRES_PORT`             | Config | PostgreSQL port                         | `5432`                          | Yes      |
-| `POSTGRES_USER`             | Config | PostgreSQL username                     | `warracker`                     | Yes      |
 | `SERVICE_FOLDER_BACKUP`     | Volume | Host path for database backups          | `/srv/warracker/backups`        | Yes      |
-| `SERVICE_FOLDER_DATA`       | Volume | Host path for PostgreSQL database data  | `/srv/warracker/postgres`       | Yes      |
 | `SERVICE_FOLDER_UPLOADS`    | Volume | Host path for uploaded files and assets | `/srv/warracker/uploads`        | Yes      |
 | `SERVICE_LIMIT_CPU`         | Config | CPU limit for main container            | `0.5`                           | Yes      |
 | `SERVICE_LIMIT_CPU_DB`      | Config | CPU limit for database container        | `0.1`                           | Yes      |
@@ -47,21 +42,16 @@ FRONTEND_URL=https://warracker.example.com
 SECRET_KEY=your-very-secure-secret-key-here
 
 # Database
-DB_ADMIN_USER=admin
-DB_ADMIN_PASSWORD=your-admin-password-here
 DB_HOST=db
 DB_NAME=warracker
 DB_PASSWORD=your-db-password-here
 DB_USER=warracker
-POSTGRES_DB=warracker
+POSTGRES_BACKUP_SCHEDULE=0 2 * * *
 POSTGRES_HOST=db
 POSTGRES_PASSWORD=your-db-password-here
-POSTGRES_PORT=5432
-POSTGRES_USER=warracker
 
 # Service
 SERVICE_FOLDER_BACKUP=/srv/warracker/backups
-SERVICE_FOLDER_DATA=/srv/warracker/postgres
 SERVICE_FOLDER_UPLOADS=/srv/warracker/uploads
 SERVICE_LIMIT_CPU=0.5
 SERVICE_LIMIT_CPU_DB=0.1
@@ -77,9 +67,10 @@ TZ=Europe/Madrid
 - `SERVICE_PORT` → Container port 80 (Web interface)
 
 **Volume mapping:**
-- `SERVICE_FOLDER_DATA` → `/var/lib/postgresql/data` (PostgreSQL database files)
 - `SERVICE_FOLDER_BACKUP` → `/backups` (Database backup storage)
 - `SERVICE_FOLDER_UPLOADS` → `/data/uploads` (User uploaded files and assets)
+- `joplin.etc` → `/joplin/etc` (Joplin configuration - Docker managed)
+- `joplin.var` → `/joplin/var` (Joplin data - Docker managed)
 
 ---
 
@@ -97,6 +88,8 @@ TZ=Europe/Madrid
 - **Admin access**: Secure database admin credentials separately
 - **Reverse proxy**: Use HTTPS reverse proxy for production deployment
 - **Data privacy**: Habit tracking data contains personal behavioral information
+- **Automatic backups**: Scheduled backups with `POSTGRES_BACKUP_SCHEDULE`
+- **Docker managed volumes**: Enhanced data persistence and security
 
 ---
 
@@ -136,6 +129,12 @@ TZ=Europe/Madrid
 - Increase resource limits for both containers
 - Monitor database performance and size
 - Check resource usage: `docker stats warracker db`
+
+**Backup failures:**
+- Verify `POSTGRES_BACKUP_SCHEDULE` cron format
+- Check backup directory permissions and disk space
+- Review database logs for backup errors
+- Test manual backup to isolate issues
 
 ---
 

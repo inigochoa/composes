@@ -8,24 +8,25 @@ services:
           memory: ${SERVICE_LIMIT_MEMORY_DB}
     env_file:
       - .env
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    image: postgres:15-alpine
+    image: 11notes/postgres:16
+    read_only: true
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
+    tmpfs:
+      - /postgres/run:uid=1000,gid=1000
+      - /postgres/log:uid=1000,gid=1000
     volumes:
-      - ${SERVICE_FOLDER_BACKUP}:/backups
-      - ${SERVICE_FOLDER_DATA}:/var/lib/postgresql/data
+      - postgres.etc:/postgres/etc
+      - postgres.var:/postgres/var
+      - ${SERVICE_FOLDER_BACKUP}:/postgres/backup
 
   warracker:
     container_name: warracker
     depends_on:
       db:
         condition: service_healthy
+        restart: true
     deploy:
       resources:
         limits:
@@ -41,3 +42,7 @@ services:
       - no-new-privileges:true
     volumes:
       - ${SERVICE_FOLDER_UPLOADS}:/data/uploads
+
+volumes:
+  postgres.etc:
+  postgres.var:
