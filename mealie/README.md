@@ -18,10 +18,10 @@ Environment is provided through `.env` (loaded with `env_file: .env`). Below are
 | `BASE_URL`             | Config | Base URL for Mealie application    | `https://mealie.example.com` | Yes      |
 | `PGID`                 | Config | Group ID for file permissions      | `1000`                       | Yes      |
 | `PUID`                 | Config | User ID for file permissions       | `1000`                       | Yes      |
-| `SERVICE_FOLDER_DATA`  | Volume | Host path for Mealie data storage  | `/srv/mealie/data`           | Yes      |
-| `SERVICE_LIMIT_CPU`    | Config | CPU limit for the container        | `1.0`                        | Yes      |
-| `SERVICE_LIMIT_MEMORY` | Config | Memory limit for the container     | `512M`                       | Yes      |
-| `SERVICE_PORT`         | Port   | Host port for Mealie web interface | `9001`                       | Yes      |
+| `SERVICE_FOLDER_DATA`  | Volume | Host path for Mealie data storage  | `/srv/mealie/data`           | No       |
+| `SERVICE_LIMIT_CPU`    | Config | CPU limit for the container        | `1.0`                        | No       |
+| `SERVICE_LIMIT_MEMORY` | Config | Memory limit for the container     | `512M`                       | No       |
+| `SERVICE_PORT`         | Port   | Host port for Mealie web interface | `9000`                       | No       |
 | `TZ`                   | Config | Container timezone                 | `Europe/Madrid`              | Yes      |
 
 **Typical `.env`**
