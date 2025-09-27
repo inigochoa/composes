@@ -17,17 +17,19 @@ the variables from your `.env.example`:
 | Variable               | Type   | Description                                   | Example                        | Required |
 | ---------------------- | ------ | --------------------------------------------- | ------------------------------ | -------- |
 | `DOCKER_SOCKET`        | Config | Path to Docker socket                         | `unix:///var/run/docker.sock`  | Yes      |
+| `HEALTH_FILE  `        | Config | Path to health file for connection monitoring | `/tmp/healthy`                 | Yes      |
 | `NEWT_ID`              | Config | Unique identifier for this Newt instance      | `server-01`                    | Yes      |
 | `NEWT_SECRET`          | Config | Authentication secret for Pangolin connection | `your-secret-key`              | Yes      |
 | `PANGOLIN_ENDPOINT`    | Config | Pangolin server endpoint URL                  | `https://pangolin.example.com` | Yes      |
-| `SERVICE_LIMIT_CPU`    | Config | CPU limit for the container                   | `0.25`                         | Yes      |
-| `SERVICE_LIMIT_MEMORY` | Config | Memory limit for the container                | `128M`                         | Yes      |
+| `SERVICE_LIMIT_CPU`    | Config | CPU limit for the container                   | `0.25`                         | No       |
+| `SERVICE_LIMIT_MEMORY` | Config | Memory limit for the container                | `128M`                         | No       |
 
 **Typical `.env`**
 
 ```dotenv
 # Newt configuration
 DOCKER_SOCKET=unix:///var/run/docker.sock
+HEALTH_FILE=/tmp/healthy
 NEWT_ID=server-01
 NEWT_SECRET=your-very-secure-secret-key
 PANGOLIN_ENDPOINT=https://pangolin.example.com

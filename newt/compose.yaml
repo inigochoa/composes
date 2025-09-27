@@ -4,10 +4,15 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU}
-          memory: ${SERVICE_LIMIT_MEMORY}
-    env_file:
-      - .env
+          cpus: ${SERVICE_LIMIT_CPU:-0.25}
+          memory: ${SERVICE_LIMIT_MEMORY:-128M}
+    env_file: .env
+    healthcheck:
+      interval: 30s
+      retries: 3
+      start_period: 30s
+      test: ['CMD', 'test', '-f', '/tmp/healthy']
+      timeout: 10s
     image: fosrl/newt:latest
     restart: unless-stopped
     security_opt:
