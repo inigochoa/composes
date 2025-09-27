@@ -4,17 +4,22 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU}
-          memory: ${SERVICE_LIMIT_MEMORY}
-    env_file:
-      - .env
+          cpus: ${SERVICE_LIMIT_CPU:-2.00}
+          memory: ${SERVICE_LIMIT_MEMORY:-1G}
+    env_file: .env
+    healthcheck:
+      interval: 30s
+      start_period: 5s
+      retries: 3
+      test: ['CMD', 'curl', '-f', 'http://localhost:8200']
+      timeout: 10s
     image: lscr.io/linuxserver/duplicati:latest
     ports:
-      - ${SERVICE_PORT}:8200
+      - ${SERVICE_PORT:-8200}:8200
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ${SERVICE_FOLDER_BACKUPS}:/backups
-      - ${SERVICE_FOLDER_CONFIG}:/config
-      - ${SERVICE_FOLDER_SOURCE}:/source:ro
+      - ${SERVICE_FOLDER_BACKUPS:-./backups}:/backups
+      - ${SERVICE_FOLDER_CONFIG:-./config}:/config
+      - ${SERVICE_FOLDER_SOURCE:-./source}:/source:ro

@@ -18,12 +18,12 @@ the variables from your `.env.example`:
 | -------------------------- | ------ | ----------------------------------------------- | -------------------------- | -------- |
 | `PGID`                     | Config | Group ID for file permissions                   | `1000`                     | Yes      |
 | `PUID`                     | Config | User ID for file permissions                    | `1000`                     | Yes      |
-| `SERVICE_FOLDER_BACKUPS`   | Volume | Host path where backup files will be stored     | `/srv/duplicati/backups`   | Yes      |
-| `SERVICE_FOLDER_CONFIG`    | Volume | Host path for Duplicati configuration files     | `/srv/duplicati/config`    | Yes      |
-| `SERVICE_FOLDER_SOURCE`    | Volume | Host path containing data to backup (read-only) | `/srv/data`                | Yes      |
-| `SERVICE_LIMIT_CPU`        | Config | CPU limit for the container                     | `2.0`                      | Yes      |
-| `SERVICE_LIMIT_MEMORY`     | Config | Memory limit for the container                  | `1G`                       | Yes      |
-| `SERVICE_PORT`             | Port   | Host port for Duplicati web interface           | `8200`                     | Yes      |
+| `SERVICE_FOLDER_BACKUPS`   | Volume | Host path where backup files will be stored     | `/srv/duplicati/backups`   | No       |
+| `SERVICE_FOLDER_CONFIG`    | Volume | Host path for Duplicati configuration files     | `/srv/duplicati/config`    | No       |
+| `SERVICE_FOLDER_SOURCE`    | Volume | Host path containing data to backup (read-only) | `/srv/data`                | No       |
+| `SERVICE_LIMIT_CPU`        | Config | CPU limit for the container                     | `2.0`                      | No       |
+| `SERVICE_LIMIT_MEMORY`     | Config | Memory limit for the container                  | `1G`                       | No       |
+| `SERVICE_PORT`             | Port   | Host port for Duplicati web interface           | `8200`                     | No       |
 | `SETTINGS_ENCRYPTION_KEY`  | Config | Encryption key for Duplicati settings database  | `your-secure-key-here`     | Yes      |
 | `TZ`                       | Config | Container timezone                              | `Europe/Madrid`            | Yes      |
 
