@@ -15,17 +15,23 @@ Environment is provided through `.env` (loaded with `env_file: .env`). Below are
 
 | Variable                    | Type   | Description                             | Example                        | Required |
 | --------------------------- | ------ | --------------------------------------- | ------------------------------ | -------- |
+| `PGID`                      | Config | Group ID for file permissions           | `1000`                         | Yes      |
+| `PUID`                      | Config | User ID for file permissions            | `1000`                         | Yes      |
 | `SYMFONY__ENV__DOMAIN_NAME` | Config | Domain name for proper URL generation   | `https://wallabag.example.com` | Yes      |
-| `SERVICE_FOLDER_DATA`       | Volume | Host path for Wallabag data storage     | `/srv/wallabag/data`           | Yes      |
-| `SERVICE_FOLDER_IMAGES`     | Volume | Host path for article images and assets | `/srv/wallabag/images`         | Yes      |
-| `SERVICE_LIMIT_CPU`         | Config | CPU limit for the container             | `1.0`                          | Yes      |
-| `SERVICE_LIMIT_MEMORY`      | Config | Memory limit for the container          | `512M`                         | Yes      |
-| `SERVICE_PORT`              | Port   | Host port for Wallabag web interface    | `8080`                         | Yes      |
+| `SERVICE_FOLDER_DATA`       | Volume | Host path for Wallabag data storage     | `/srv/wallabag/data`           | No       |
+| `SERVICE_FOLDER_IMAGES`     | Volume | Host path for article images and assets | `/srv/wallabag/images`         | No       |
+| `SERVICE_LIMIT_CPU`         | Config | CPU limit for the container             | `1.0`                          | No       |
+| `SERVICE_LIMIT_MEMORY`      | Config | Memory limit for the container          | `512M`                         | No       |
+| `SERVICE_PORT`              | Port   | Host port for Wallabag web interface    | `8080`                         | No       |
 | `TZ`                        | Config | Container timezone                      | `Europe/Madrid`                | Yes      |
 
 **Typical `.env`**
 
 ```dotenv
+# User permissions
+PGID=1000
+PUID=1000
+
 # Core configuration
 SYMFONY__ENV__DOMAIN_NAME=https://wallabag.example.com
 
