@@ -20,12 +20,12 @@ the variables from your `.env.example`:
 | `APP_BASE_URL`             | Config | Base URL for Joplin Server                | `https://joplin.example.com` | Yes      |
 | `POSTGRES_BACKUP_SCHEDULE` | Config | Cron schedule for automatic backups       | `0 2 * * *`                  | Yes      |
 | `POSTGRES_PASSWORD`        | Config | PostgreSQL database password              | `secure_password123`         | Yes      |
-| `SERVICE_FOLDER_BACKUP`    | Volume | Host path for PostgreSQL backups          | `/srv/joplin/backups`        | Yes      |
-| `SERVICE_LIMIT_CPU`        | Config | CPU limit for Joplin container            | `1.0`                        | Yes      |
-| `SERVICE_LIMIT_CPU_DB`     | Config | CPU limit for database container          | `0.5`                        | Yes      |
-| `SERVICE_LIMIT_MEMORY`     | Config | Memory limit for Joplin container         | `1G`                         | Yes      |
-| `SERVICE_LIMIT_MEMORY_DB`  | Config | Memory limit for database container       | `512M`                       | Yes      |
-| `SERVICE_PORT`             | Port   | Host port for Joplin Server web interface | `22300`                      | Yes      |
+| `SERVICE_FOLDER_BACKUP`    | Volume | Host path for PostgreSQL backups          | `/srv/joplin/backups`        | No       |
+| `SERVICE_LIMIT_CPU`        | Config | CPU limit for Joplin container            | `1.0`                        | No       |
+| `SERVICE_LIMIT_CPU_DB`     | Config | CPU limit for database container          | `0.5`                        | No       |
+| `SERVICE_LIMIT_MEMORY`     | Config | Memory limit for Joplin container         | `1G`                         | No       |
+| `SERVICE_LIMIT_MEMORY_DB`  | Config | Memory limit for database container       | `512M`                       | No       |
+| `SERVICE_PORT`             | Port   | Host port for Joplin Server web interface | `22300`                      | No       |
 | `TZ`                       | Config | Container timezone                        | `Europe/Madrid`              | Yes      |
 
 **Typical `.env`**

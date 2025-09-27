@@ -4,10 +4,9 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU_DB}
-          memory: ${SERVICE_LIMIT_MEMORY_DB}
-    env_file:
-      - .env
+          cpus: ${SERVICE_LIMIT_CPU_DB:-0.50}
+          memory: ${SERVICE_LIMIT_MEMORY_DB:-512M}
+    env_file: .env
     image: 11notes/postgres:16
     read_only: true
     restart: unless-stopped
@@ -19,7 +18,7 @@ services:
     volumes:
       - postgres.etc:/postgres/etc
       - postgres.var:/postgres/var
-      - ${SERVICE_FOLDER_BACKUP}:/postgres/backup
+      - ${SERVICE_FOLDER_BACKUP:-./backup}:/postgres/backup
 
   joplin:
     container_name: joplin
@@ -30,13 +29,12 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU}
-          memory: ${SERVICE_LIMIT_MEMORY}
-    env_file:
-      - .env
+          cpus: ${SERVICE_LIMIT_CPU:-1.00}
+          memory: ${SERVICE_LIMIT_MEMORY:-1G}
+    env_file: .env
     image: 11notes/joplin:3
     ports:
-      - ${SERVICE_PORT}:22300/tcp
+      - ${SERVICE_PORT:-22300}:22300/tcp
     read_only: true
     restart: unless-stopped
     security_opt:
