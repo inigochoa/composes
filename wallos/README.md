@@ -16,16 +16,22 @@ the variables from your `.env.example`:
 
 | Variable               | Type   | Description                                 | Example             | Required |
 | ---------------------- | ------ | ------------------------------------------- | ------------------- | -------- |
-| `SERVICE_FOLDER_DATA`  | Volume | Host path for Wallos database storage       | `/srv/wallos/data`  | Yes      |
-| `SERVICE_FOLDER_LOGOS` | Volume | Host path for subscription logos and images | `/srv/wallos/logos` | Yes      |
-| `SERVICE_LIMIT_CPU`    | Config | CPU limit for the container                 | `0.25`              | Yes      |
-| `SERVICE_LIMIT_MEMORY` | Config | Memory limit for the container              | `128M`              | Yes      |
-| `SERVICE_PORT`         | Port   | Host port for Wallos web interface          | `8080`              | Yes      |
+| `PGID`                 | Config | Group ID for file permissions               | `1000`              | Yes      |
+| `PUID`                 | Config | User ID for file permissions                | `1000`              | Yes      |
+| `SERVICE_FOLDER_DATA`  | Volume | Host path for Wallos database storage       | `/srv/wallos/data`  | No       |
+| `SERVICE_FOLDER_LOGOS` | Volume | Host path for subscription logos and images | `/srv/wallos/logos` | No       |
+| `SERVICE_LIMIT_CPU`    | Config | CPU limit for the container                 | `0.25`              | No       |
+| `SERVICE_LIMIT_MEMORY` | Config | Memory limit for the container              | `128M`              | No       |
+| `SERVICE_PORT`         | Port   | Host port for Wallos web interface          | `8080`              | No       |
 | `TZ`                   | Config | Container timezone                          | `Europe/Madrid`     | Yes      |
 
 **Typical `.env`**
 
 ```dotenv
+# User permissions
+PGID=1000
+PUID=1000
+
 # Service
 SERVICE_FOLDER_DATA=/srv/wallos/data
 SERVICE_FOLDER_LOGOS=/srv/wallos/logos
