@@ -17,11 +17,11 @@ the variables from your `.env.example`:
 | Variable                    | Type   | Description                              | Example                      | Required |
 | --------------------------- | ------ | ---------------------------------------- | ---------------------------- | -------- |
 | `CRON_MIN`                  | Config | Cron schedule for feed updates (minutes) | `*/13`                       | Yes      |
-| `SERVICE_FOLDER_DATA`       | Volume | Host path for FreshRSS data storage      | `/srv/freshrss/data`         | Yes      |
-| `SERVICE_FOLDER_EXTENSIONS` | Volume | Host path for FreshRSS extensions        | `/srv/freshrss/extensions`   | Yes      |
-| `SERVICE_LIMIT_CPU`         | Config | CPU limit for the container              | `0.5`                        | Yes      |
-| `SERVICE_LIMIT_MEMORY`      | Config | Memory limit for the container           | `256M`                       | Yes      |
-| `SERVICE_PORT`              | Port   | Host port for FreshRSS web interface     | `8080`                       | Yes      |
+| `SERVICE_FOLDER_DATA`       | Volume | Host path for FreshRSS data storage      | `/srv/freshrss/data`         | No       |
+| `SERVICE_FOLDER_EXTENSIONS` | Volume | Host path for FreshRSS extensions        | `/srv/freshrss/extensions`   | No       |
+| `SERVICE_LIMIT_CPU`         | Config | CPU limit for the container              | `0.5`                        | No       |
+| `SERVICE_LIMIT_MEMORY`      | Config | Memory limit for the container           | `256M`                       | No       |
+| `SERVICE_PORT`              | Port   | Host port for FreshRSS web interface     | `8080`                       | No       |
 | `TZ`                        | Config | Container timezone                       | `Europe/Madrid`              | Yes      |
 
 **Typical `.env`**
@@ -114,3 +114,4 @@ TZ=Europe/Madrid
 - [FreshRSS GitHub](https://github.com/FreshRSS/FreshRSS)
 - [FreshRSS Documentation](https://freshrss.github.io/FreshRSS/)
 - [Extensions Repository](https://github.com/FreshRSS/Extensions)
+- [LinuxServer FreshRSS Image](https://docs.linuxserver.io/images/docker-freshrss)
