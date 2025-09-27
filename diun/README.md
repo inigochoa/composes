@@ -18,9 +18,9 @@ the variables from your `.env.example`:
 | ----------------------- | ------ | ------------------------------------------------------- | ----------------------------- | -------- |
 | `DIUN_PROVIDERS_DOCKER` | Config | Enables Docker provider to scan local images/containers | `true`                        | Yes      |
 | `DIUN_WATCH_SCHEDULE`   | Config | Cron expression defining scan frequency                 | `0 */6 * * *`                 | Yes      |
-| `SERVICE_FOLDER_DATA`   | Volume | Host path for persistent Diun data                      | `/srv/diun/data`              | Yes      |
-| `SERVICE_LIMIT_CPU`     | Config | CPU limit for the container                             | `0.50`                        | Yes      |
-| `SERVICE_LIMIT_MEMORY`  | Config | Memory limit for the container                          | `256M`                        | Yes      |
+| `SERVICE_FOLDER_DATA`   | Volume | Host path for persistent Diun data                      | `/srv/diun/data`              | No       |
+| `SERVICE_LIMIT_CPU`     | Config | CPU limit for the container                             | `0.50`                        | No       |
+| `SERVICE_LIMIT_MEMORY`  | Config | Memory limit for the container                          | `256M`                        | No       |
 | `TZ`                    | Config | Container timezone                                      | `Europe/Madrid`               | Yes      |
 
 **Typical `.env`**

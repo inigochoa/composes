@@ -4,14 +4,14 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU}
-          memory: ${SERVICE_LIMIT_MEMORY}
-    env_file:
-      - .env
+          cpus: ${SERVICE_LIMIT_CPU:-0.50}
+          memory: ${SERVICE_LIMIT_MEMORY:-256M}
+    env_file: .env
     image: crazymax/diun:latest
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
+    user: 1000:988
     volumes:
-      - ${SERVICE_FOLDER_DATA}:/data
+      - ${SERVICE_FOLDER_DATA:-./data}:/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
