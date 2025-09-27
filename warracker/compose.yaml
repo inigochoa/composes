@@ -4,10 +4,9 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU_DB}
-          memory: ${SERVICE_LIMIT_MEMORY_DB}
-    env_file:
-      - .env
+          cpus: ${SERVICE_LIMIT_CPU_DB:-0.50}
+          memory: ${SERVICE_LIMIT_MEMORY_DB:-512M}
+    env_file: .env
     image: 11notes/postgres:16
     read_only: true
     restart: unless-stopped
@@ -19,7 +18,7 @@ services:
     volumes:
       - postgres.etc:/postgres/etc
       - postgres.var:/postgres/var
-      - ${SERVICE_FOLDER_BACKUP}:/postgres/backup
+      - ${SERVICE_FOLDER_BACKUP:-./backup}:/postgres/backup
 
   warracker:
     container_name: warracker
@@ -30,18 +29,17 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU}
-          memory: ${SERVICE_LIMIT_MEMORY}
-    env_file:
-      - .env
+          cpus: ${SERVICE_LIMIT_CPU:-0.50}
+          memory: ${SERVICE_LIMIT_MEMORY:-512M}
+    env_file: .env
     image: ghcr.io/sassanix/warracker/main:latest
     ports:
-      - ${SERVICE_PORT}:80
+      - ${SERVICE_PORT:-80}:80
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ${SERVICE_FOLDER_UPLOADS}:/data/uploads
+      - ${SERVICE_FOLDER_UPLOADS:-./uploads}:/data/uploads
 
 volumes:
   postgres.etc:

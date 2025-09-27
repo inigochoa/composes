@@ -12,30 +12,36 @@ expirations, store receipts, files. You own the data, your rules!
 Environment is provided through `.env` (loaded with `env_file: .env`). Below are
 the variables from your `.env.example`:
 
-| Variable                    | Type   | Description                             | Example                         | Required |
-| --------------------------- | ------ | --------------------------------------- | ------------------------------- | -------- |
-| `APP_BASE_URL`              | Config | Base URL for Warracker application      | `https://warracker.example.com` | Yes      |
-| `FRONTEND_URL`              | Config | Frontend URL for CORS configuration     | `https://warracker.example.com` | Yes      |
-| `SECRET_KEY`                | Config | Secret key for JWT token generation     | `your-very-secure-secret`       | Yes      |
-| `DB_HOST`                   | Config | Database host (container name)          | `db`                            | Yes      |
-| `DB_NAME`                   | Config | Database name                           | `postgres`                      | Yes      |
-| `DB_PASSWORD`               | Config | Database user password                  | `secure_password123`            | Yes      |
-| `DB_USER`                   | Config | Database username                       | `postgres`                      | Yes      |
-| `POSTGRES_BACKUP_SCHEDULE`  | Config | Cron schedule for automatic backups     | `0 2 * * *`                     | Yes      |
-| `POSTGRES_HOST`             | Config | PostgreSQL host (container name)        | `db`                            | Yes      |
-| `POSTGRES_PASSWORD`         | Config | PostgreSQL password                     | `secure_password123`            | Yes      |
-| `SERVICE_FOLDER_BACKUP`     | Volume | Host path for database backups          | `/srv/warracker/backups`        | Yes      |
-| `SERVICE_FOLDER_UPLOADS`    | Volume | Host path for uploaded files and assets | `/srv/warracker/uploads`        | Yes      |
-| `SERVICE_LIMIT_CPU`         | Config | CPU limit for main container            | `0.5`                           | Yes      |
-| `SERVICE_LIMIT_CPU_DB`      | Config | CPU limit for database container        | `0.1`                           | Yes      |
-| `SERVICE_LIMIT_MEMORY`      | Config | Memory limit for main container         | `512M`                          | Yes      |
-| `SERVICE_LIMIT_MEMORY_DB`   | Config | Memory limit for database container     | `128M`                          | Yes      |
-| `SERVICE_PORT`              | Port   | Host port for Warracker web interface   | `3000`                          | Yes      |
-| `TZ`                        | Config | Container timezone                      | `Europe/Madrid`                 | Yes      |
+| Variable                   | Type   | Description                             | Example                         | Required |
+| -------------------------- | ------ | --------------------------------------- | ------------------------------- | -------- |
+| `PGID`                     | Config | Group ID for file permissions           | `1000`                          | Yes      |
+| `PUID`                     | Config | User ID for file permissions            | `1000`                          | Yes      |
+| `APP_BASE_URL`             | Config | Base URL for Warracker application      | `https://warracker.example.com` | Yes      |
+| `FRONTEND_URL`             | Config | Frontend URL for CORS configuration     | `https://warracker.example.com` | Yes      |
+| `SECRET_KEY`               | Config | Secret key for JWT token generation     | `your-very-secure-secret`       | Yes      |
+| `DB_HOST`                  | Config | Database host (container name)          | `db`                            | Yes      |
+| `DB_NAME`                  | Config | Database name                           | `postgres`                      | Yes      |
+| `DB_PASSWORD`              | Config | Database user password                  | `secure_password123`            | Yes      |
+| `DB_USER`                  | Config | Database username                       | `postgres`                      | Yes      |
+| `POSTGRES_BACKUP_SCHEDULE` | Config | Cron schedule for automatic backups     | `0 2 * * *`                     | Yes      |
+| `POSTGRES_HOST`            | Config | PostgreSQL host (container name)        | `db`                            | Yes      |
+| `POSTGRES_PASSWORD`        | Config | PostgreSQL password                     | `secure_password123`            | Yes      |
+| `SERVICE_FOLDER_BACKUP`    | Volume | Host path for database backups          | `/srv/warracker/backups`        | No       |
+| `SERVICE_FOLDER_UPLOADS`   | Volume | Host path for uploaded files and assets | `/srv/warracker/uploads`        | No       |
+| `SERVICE_LIMIT_CPU`        | Config | CPU limit for main container            | `0.5`                           | No       |
+| `SERVICE_LIMIT_CPU_DB`     | Config | CPU limit for database container        | `0.5`                           | No       |
+| `SERVICE_LIMIT_MEMORY`     | Config | Memory limit for main container         | `512M`                          | No       |
+| `SERVICE_LIMIT_MEMORY_DB`  | Config | Memory limit for database container     | `512M`                          | No       |
+| `SERVICE_PORT`             | Port   | Host port for Warracker web interface   | `3000`                          | No       |
+| `TZ`                       | Config | Container timezone                      | `Europe/Madrid`                 | Yes      |
 
 **Typical `.env`**
 
 ```dotenv
+# User permissions
+PGID=1000
+PUID=1000
+
 # Core configuration
 APP_BASE_URL=https://warracker.example.com
 FRONTEND_URL=https://warracker.example.com
