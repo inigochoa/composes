@@ -14,16 +14,18 @@ new content.
 Environment is provided through `.env` (loaded with `env_file: .env`). Below are
 the variables from your `.env.example`:
 
-| Variable                     | Type   | Description                             | Example                    | Required |
-| ---------------------------- | ------ | --------------------------------------- | -------------------------- | -------- |
-| `SECRET`                     | Config | Secret key for application security     | `your-very-secure-secret`  | Yes      |
-| `SERVICE_FOLDER_DATA`        | Volume | Host path for YamTrack database storage | `/srv/yamtrack/db`         | Yes      |
-| `SERVICE_LIMIT_CPU`          | Config | CPU limit for YamTrack container        | `0.5`                      | Yes      |
-| `SERVICE_LIMIT_CPU_REDIS`    | Config | CPU limit for Redis container           | `0.25`                     | Yes      |
-| `SERVICE_LIMIT_MEMORY`       | Config | Memory limit for YamTrack container     | `256M`                     | Yes      |
-| `SERVICE_LIMIT_MEMORY_REDIS` | Config | Memory limit for Redis container        | `128M`                     | Yes      |
-| `SERVICE_PORT`               | Port   | Host port for YamTrack web interface    | `8000`                     | Yes      |
-| `TZ`                         | Config | Container timezone                      | `Europe/Madrid`            | Yes      |
+| Variable                     | Type   | Description                             | Example                   | Required |
+| ---------------------------- | ------ | --------------------------------------- | ------------------------- | -------- |
+| `PGID`                       | Config | Group ID for file permissions           | `1000`                    | Yes      |
+| `PUID`                       | Config | User ID for file permissions            | `1000`                    | Yes      |
+| `SECRET`                     | Config | Secret key for application security     | `your-very-secure-secret` | Yes      |
+| `SERVICE_FOLDER_DATA`        | Volume | Host path for YamTrack database storage | `/srv/yamtrack/db`        | No       |
+| `SERVICE_LIMIT_CPU`          | Config | CPU limit for YamTrack container        | `0.5`                     | No       |
+| `SERVICE_LIMIT_CPU_REDIS`    | Config | CPU limit for Redis container           | `0.25`                    | No       |
+| `SERVICE_LIMIT_MEMORY`       | Config | Memory limit for YamTrack container     | `256M`                    | No       |
+| `SERVICE_LIMIT_MEMORY_REDIS` | Config | Memory limit for Redis container        | `128M`                    | No       |
+| `SERVICE_PORT`               | Port   | Host port for YamTrack web interface    | `8000`                    | No       |
+| `TZ`                         | Config | Container timezone                      | `Europe/Madrid`           | Yes      |
 
 **Typical `.env`**
 

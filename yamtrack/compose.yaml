@@ -1,11 +1,11 @@
 services:
   redis:
-    container_name: yamtrack-redis
+    container_name: yamtrack_redis
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU_REDIS}
-          memory: ${SERVICE_LIMIT_MEMORY_REDIS}
+          cpus: ${SERVICE_LIMIT_CPU_REDIS:-0.25}
+          memory: ${SERVICE_LIMIT_MEMORY_REDIS:-128M}
     image: redis:alpine
     networks:
       - yamtrack
@@ -20,20 +20,20 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU}
-          memory: ${SERVICE_LIMIT_MEMORY}
+          cpus: ${SERVICE_LIMIT_CPU:-0.50}
+          memory: ${SERVICE_LIMIT_MEMORY:-256M}
     env_file:
       - .env
     image: ghcr.io/fuzzygrim/yamtrack
     networks:
       - yamtrack
     ports:
-      - ${SERVICE_PORT}:8000
+      - ${SERVICE_PORT:-8000}:8000
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ${SERVICE_FOLDER_DATA}:/yamtrack/db
+      - ${SERVICE_FOLDER_DATA:-./data}:/yamtrack/db
 
 networks:
   yamtrack:
