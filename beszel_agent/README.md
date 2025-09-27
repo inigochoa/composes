@@ -20,10 +20,10 @@ the variables from your `.env.example`:
 | `KEY`                   | Config | Authentication key for hub communication | `your-secure-key-here`       | Yes      |
 | `LISTEN`                | Config | Agent listen address and port            | `0.0.0.0:45876`              | Yes      |
 | `TOKEN`                 | Config | Authentication token for API access      | `your-secure-token-here`     | Yes      |
-| `SERVICE_FOLDER_DATA`   | Volume | Host path for Beszel agent data storage  | `/srv/beszel/agent`          | Yes      |
-| `SERVICE_FOLDER_SOCKET` | Volume | Host path for socket communication       | `/srv/beszel/socket`         | Yes      |
-| `SERVICE_LIMIT_CPU`     | Config | CPU limit for the container              | `0.25`                       | Yes      |
-| `SERVICE_LIMIT_MEMORY`  | Config | Memory limit for the container           | `128M`                       | Yes      |
+| `SERVICE_FOLDER_DATA`   | Volume | Host path for Beszel agent data storage  | `/srv/beszel/agent`          | No       |
+| `SERVICE_FOLDER_SOCKET` | Volume | Host path for socket communication       | `/srv/beszel/socket`         | No       |
+| `SERVICE_LIMIT_CPU`     | Config | CPU limit for the container              | `0.25`                       | No       |
+| `SERVICE_LIMIT_MEMORY`  | Config | Memory limit for the container           | `128M`                       | No       |
 
 **Typical `.env`**
 

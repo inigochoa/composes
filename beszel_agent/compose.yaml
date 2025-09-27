@@ -4,10 +4,9 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU}
-          memory: ${SERVICE_LIMIT_MEMORY}
-    env_file:
-      - .env
+          cpus: ${SERVICE_LIMIT_CPU:-0.25}
+          memory: ${SERVICE_LIMIT_MEMORY:-128M}
+    env_file: .env
     healthcheck:
       interval: 120s
       test: ['CMD', '/agent', 'health']
@@ -16,7 +15,8 @@ services:
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
+    user: 1000:1000
     volumes:
-      - ${SERVICE_FOLDER_DATA}:/var/lib/beszel-agent
-      - ${SERVICE_FOLDER_SOCKET}:/beszel_socket
+      - ${SERVICE_FOLDER_DATA:-./data}:/var/lib/beszel-agent
+      - ${SERVICE_FOLDER_SOCKET:-./socket}:/beszel_socket
       - /var/run/docker.sock:/var/run/docker.sock:ro
