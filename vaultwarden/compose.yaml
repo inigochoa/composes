@@ -4,15 +4,15 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU}
-          memory: ${SERVICE_LIMIT_MEMORY}
-    env_file:
-      - .env
+          cpus: ${SERVICE_LIMIT_CPU:-0.50}
+          memory: ${SERVICE_LIMIT_MEMORY:-256M}
+    env_file: .env
     image: vaultwarden/server:latest-alpine
     ports:
-      - ${SERVICE_PORT}:80
+      - ${SERVICE_PORT:-80}:80
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
+    user: 1000:1000
     volumes:
-      - ${SERVICE_FOLDER_DATA}:/data
+      - ${SERVICE_FOLDER_DATA:-./data}:/data

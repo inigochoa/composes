@@ -13,15 +13,15 @@ and browser extensions.
 
 Environment is provided through `.env` (loaded with `env_file: .env`). Below are the variables from your `.env.example`:
 
-| Variable                    | Type   | Description                             | Example                           | Required |
-| --------------------------- | ------ | --------------------------------------- | --------------------------------- | -------- |
-| `ADMIN_TOKEN`               | Config | Admin panel access token (argon2 hash)  | `$argon2id$v=19$m=65540...`       | Yes      |
-| `DOMAIN`                    | Config | Server domain for proper URL generation | `https://vault.example.com`       | Yes      |
-| `SERVICE_FOLDER_DATA`       | Volume | Host path for Vaultwarden data storage  | `/srv/vaultwarden/data`           | Yes      |
-| `SERVICE_LIMIT_CPU`         | Config | CPU limit for the container             | `0.5`                             | Yes      |
-| `SERVICE_LIMIT_MEMORY`      | Config | Memory limit for the container          | `256M`                            | Yes      |
-| `SERVICE_PORT`              | Port   | Host port for Vaultwarden web interface | `8080`                            | Yes      |
-| `TZ`                        | Config | Container timezone                      | `Europe/Madrid`                   | Yes      |
+| Variable               | Type   | Description                             | Example                     | Required |
+| ---------------------- | ------ | --------------------------------------- | --------------------------- | -------- |
+| `ADMIN_TOKEN`          | Config | Admin panel access token (argon2 hash)  | `$argon2id$v=19$m=65540...` | Yes      |
+| `DOMAIN`               | Config | Server domain for proper URL generation | `https://vault.example.com` | Yes      |
+| `SERVICE_FOLDER_DATA`  | Volume | Host path for Vaultwarden data storage  | `/srv/vaultwarden/data`     | No       |
+| `SERVICE_LIMIT_CPU`    | Config | CPU limit for the container             | `0.5`                       | No       |
+| `SERVICE_LIMIT_MEMORY` | Config | Memory limit for the container          | `256M`                      | No       |
+| `SERVICE_PORT`         | Port   | Host port for Vaultwarden web interface | `8080`                      | No       |
+| `TZ`                   | Config | Container timezone                      | `Europe/Madrid`             | Yes      |
 
 **Typical `.env`**
 
