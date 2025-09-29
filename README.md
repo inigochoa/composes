@@ -24,6 +24,7 @@ stack of self-hosted services managed by Docker Compose.
 - **[Duplicati]**: Backup data
 - **[FreshRSS]**: A RSS and Atom feed aggregator
 - **[Joplin]**: An open-source note-taking and to-do application
+- **[Karakeep]**: A read-it-later application to save web articles
 - **[Mealie]**: A recipe manager and meal planner
 - **[Newt]**: Docker container management for [Pangolin]
 - **[Syncthing]**: A continuous file synchronization program
@@ -79,6 +80,7 @@ details.
 [FreshRSS]: ./freshrss/README.md
 [Mealie]: ./mealie/README.md
 [Joplin]: ./joplin/README.md
+[Karakeep]: ./karakeep/README.md
 [LICENSE]: ./LICENSE
 [Newt]: ./newt/README.md
 [Pangolin]: https://docs.digpangolin.com/
