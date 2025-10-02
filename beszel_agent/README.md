@@ -14,16 +14,14 @@ is perfect for monitoring remote servers or when running the hub separately.
 Environment is provided through `.env` (loaded with `env_file: .env`). Below are
 the variables from your `.env.example`:
 
-| Variable                | Type   | Description                              | Example                      | Required |
-| ----------------------- | ------ | ---------------------------------------- | ---------------------------- | -------- |
-| `HUB_URL`               | Config | URL of the Beszel hub server             | `https://beszel.example.com` | Yes      |
-| `KEY`                   | Config | Authentication key for hub communication | `your-secure-key-here`       | Yes      |
-| `LISTEN`                | Config | Agent listen address and port            | `0.0.0.0:45876`              | Yes      |
-| `TOKEN`                 | Config | Authentication token for API access      | `your-secure-token-here`     | Yes      |
-| `SERVICE_FOLDER_DATA`   | Volume | Host path for Beszel agent data storage  | `/srv/beszel/agent`          | No       |
-| `SERVICE_FOLDER_SOCKET` | Volume | Host path for socket communication       | `/srv/beszel/socket`         | No       |
-| `SERVICE_LIMIT_CPU`     | Config | CPU limit for the container              | `0.25`                       | No       |
-| `SERVICE_LIMIT_MEMORY`  | Config | Memory limit for the container           | `128M`                       | No       |
+| Variable               | Type   | Description                              | Example                      | Required |
+| ---------------------- | ------ | ---------------------------------------- | ---------------------------- | -------- |
+| `HUB_URL`              | Config | URL of the Beszel hub server             | `https://beszel.example.com` | Yes      |
+| `KEY`                  | Config | Authentication key for hub communication | `your-secure-key-here`       | Yes      |
+| `LISTEN`               | Config | Agent listen address and port            | `0.0.0.0:45876`              | Yes      |
+| `TOKEN`                | Config | Authentication token for API access      | `your-secure-token-here`     | Yes      |
+| `SERVICE_LIMIT_CPU`    | Config | CPU limit for the container              | `0.25`                       | No       |
+| `SERVICE_LIMIT_MEMORY` | Config | Memory limit for the container           | `128M`                       | No       |
 
 **Typical `.env`**
 
@@ -35,16 +33,11 @@ LISTEN=0.0.0.0:45876
 TOKEN=your-secure-api-token
 
 # Service
-SERVICE_FOLDER_DATA=/srv/beszel/agent
-SERVICE_FOLDER_SOCKET=/srv/beszel/socket
 SERVICE_LIMIT_CPU=0.25
 SERVICE_LIMIT_MEMORY=128M
 ```
 
 **Volume mapping:**
-- `SERVICE_FOLDER_DATA` → `/var/lib/beszel-agent` (Agent configuration and local
-  data)
-- `SERVICE_FOLDER_SOCKET` → `/beszel_socket` (Socket for local communication)
 - `/var/run/docker.sock` → `/var/run/docker.sock:ro` (Docker monitoring -
   read-only)
 

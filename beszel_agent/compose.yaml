@@ -13,10 +13,6 @@ services:
     image: henrygd/beszel-agent:latest
     network_mode: host
     restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    user: 1000:1000
     volumes:
-      - ${SERVICE_FOLDER_DATA:-./data}:/var/lib/beszel-agent
-      - ${SERVICE_FOLDER_SOCKET:-./socket}:/beszel_socket
+      - ./data:/var/lib/beszel-agent
       - /var/run/docker.sock:/var/run/docker.sock:ro
