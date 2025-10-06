@@ -4,13 +4,17 @@ services:
     deploy:
       resources:
         limits:
-          cpus: ${SERVICE_LIMIT_CPU}
-          memory: ${SERVICE_LIMIT_MEMORY}
-    env_file:
-      - .env
+          cpus: ${SERVICE_LIMIT_CPU:-1.00}
+          memory: ${SERVICE_LIMIT_MEMORY:-512M}
+    env_file: .env
+    healthcheck:
+      interval: 1m
+      retries: 3
+      test: curl -fkLsS -m 2 127.0.0.1:8384/rest/noauth/health | grep -o --color=never OK || exit 1
+      timeout: 10s
     image: linuxserver/syncthing:latest
     ports:
-      - ${SERVICE_PORT}:8384
+      - ${SERVICE_PORT:-8384}:8384
       - 22000:22000/tcp
       - 22000:22000/udp
       - 21027:21027/udp
@@ -18,5 +22,5 @@ services:
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ${SERVICE_FOLDER_CONFIG}:/config
-      - ${SERVICE_FOLDER_DATA}:/data
+      - ${SERVICE_FOLDER_CONFIG:-./config}:/config
+      - ${SERVICE_FOLDER_DATA:-./data}:/data
