@@ -7,7 +7,7 @@ services:
           cpus: ${SERVICE_LIMIT_CPU_DB:-0.50}
           memory: ${SERVICE_LIMIT_MEMORY_DB:-512M}
     env_file: .env
-    image: 11notes/postgres:16
+    image: 11notes/postgres:17
     read_only: true
     restart: unless-stopped
     security_opt:
